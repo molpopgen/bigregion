@@ -55,8 +55,6 @@ class Recorder(object):
         self.post = post
 
     def __call__(self, pop, recorder):
-        if pop.generation % 500 == 0.:
-            print(pop.generation)
         t = np.array(pop.diploid_metadata, copy=False)
         self.data.append(Data(pop.generation, t['g'].mean(), t['g'].var()))
 
@@ -118,7 +116,6 @@ if __name__ == "__main__":
     if args.sample_size is None:
         raise ValueError("sample_size cannot be None")
     for i in [args.db_file, args.output_file]:
-        print(i)
         if os.path.exists(i):
             os.remove(i)
     pop, data = runsim(args)
