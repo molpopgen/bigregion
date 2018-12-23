@@ -122,4 +122,4 @@ if __name__ == "__main__":
     df = pd.DataFrame(data, columns=Data._fields)
     df.to_csv(args.db_file, sep=" ", index=False)
     with lzma.open(args.output_file, 'wb') as f:
-        pickle.dump(pop, f)
+        pickle.dump(pop, f, -1)
