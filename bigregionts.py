@@ -7,7 +7,6 @@ import fwdpy11.wright_fisher_ts
 import pandas as pd
 from collections import namedtuple
 import numpy as np
-import pickle
 import lzma
 import argparse
 import sys
@@ -107,7 +106,8 @@ def runsim(args):
     rng = fp11.GSLrng(args.seed)
     fwdpy11.wright_fisher_ts.evolve(
         rng, pop, params, args.gc, r, suppress_table_indexing=True)
-    return pop, r.data
+    pop.dump_to_file(args.output_file)
+    return r.data
 
 
 if __name__ == "__main__":
@@ -121,5 +121,3 @@ if __name__ == "__main__":
     pop, data = runsim(args)
     df = pd.DataFrame(data, columns=Data._fields)
     df.to_csv(args.db_file, sep=" ", index=False)
-    with lzma.open(args.output_file, 'wb') as f:
-        pickle.dump(pop, f, -1)
