@@ -118,6 +118,6 @@ if __name__ == "__main__":
     for i in [args.db_file, args.output_file]:
         if os.path.exists(i):
             os.remove(i)
-    pop, data = runsim(args)
+    data = runsim(args)
     df = pd.DataFrame(data, columns=Data._fields)
     df.to_csv(args.db_file, sep=" ", index=False)
