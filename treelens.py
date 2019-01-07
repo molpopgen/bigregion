@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 from collections import namedtuple
 
+#NOTE: this script is for the case of no pleiotropy
+
 DataRecord = namedtuple(
     "DataRecord", ['sampletime', 'left', 'right',
                    'ttime', 'tiptime', 'nmuts',
