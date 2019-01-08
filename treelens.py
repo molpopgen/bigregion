@@ -17,8 +17,8 @@ DataRecord = namedtuple(
 def make_parser():
     parser = argparse.ArgumentParser(
         "Analyze tree sequences from simulations stored in binary files")
-    parser.add_argument("infile", type=str, help="Input file name")
-    parser.add_argument("outfile", type=str,
+    parser.add_argument("--infile", type=str, help="Input file name")
+    parser.add_argument("--outfile", type=str,
                         help="Output file name. Will be gzipped")
     return parser
 
